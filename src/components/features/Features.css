@@ -1,0 +1,51 @@
+.features-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 100px 0px;
+}
+
+.features-left-part {
+  width: 40%;
+  padding: 20px;
+}
+.features-right-part {
+  width: 40%;
+  padding: 0px 100px;
+  padding-top: 130px;
+  padding-left: 160px;
+}
+
+.features-heading {
+  font-size: 50px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.features-description {
+  margin: 40px 0px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #4f5665;
+}
+
+.features-list {
+  list-style: none;
+  text-align: left;
+  padding: 0%;
+  display: grid;
+  gap: 20px;
+}
+
+.features-list-Item {
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  color: #4f5665;
+  display: flex;
+  gap: 20px;
+}
+.features-list-Item > img {
+  width: 30px;
+}

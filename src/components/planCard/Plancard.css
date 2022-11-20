@@ -1,0 +1,76 @@
+.plan-card {
+  width: 25%;
+  border: 2px solid #dddddd;
+  height: 80vh;
+  background-color: white;
+  border-radius: 10px;
+  padding: 100px 50px 50px 50px;
+  position: relative;
+}
+
+.plan-card-logo > img {
+  width: 150px;
+}
+
+.plan-card-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin: 30px 0px;
+}
+.plan-card-points-list {
+  list-style: none;
+  padding: 0px 30px;
+}
+
+.plan-points {
+  text-align: left;
+  display: flex;
+  margin-top: 10px;
+  color: #4f5665;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.plan-points > img {
+  margin-right: 20px;
+}
+.plan-card-bottom {
+  position: absolute;
+  bottom: 50px;
+  width: 75%;
+}
+
+.plan-card-bottom > div {
+  font-size: 30px;
+  color: #4f5665;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+.card-price {
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+}
+
+.outlined-btn {
+  border: 3px solid #f53838;
+  width: 60%;
+  height: 50px;
+  border-radius: 30px;
+  color: #f53838;
+  background: transparent;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 900;
+}
+.contained-btn {
+  border: 3px solid #f53838;
+  letter-spacing: 1px;
+  width: 60%;
+  height: 50px;
+  border-radius: 30px;
+  color: white;
+  background: #f53838;
+  font-size: 18px;
+  font-weight: 900;
+}

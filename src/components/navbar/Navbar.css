@@ -1,0 +1,62 @@
+.header {
+  height: 80px;
+  position: sticky;
+  z-index: 100;
+}
+.navbar-container {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.leftNav {
+  width: 24%;
+  display: grid;
+  place-items: center;
+}
+
+.midNav {
+  width: 50%;
+  height: inherit;
+}
+
+.nav-list {
+  width: max-content;
+  height: 100%;
+  display: flex;
+  list-style: none;
+  gap: 40px;
+  margin: auto;
+  padding: 0%;
+  align-items: center;
+  color: #4f5665;
+  font-weight: 600;
+}
+.nav-list-item {
+  cursor: pointer;
+}
+
+.rightNav {
+  display: flex;
+  width: 24%;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+}
+
+.signin-btn {
+  background: transparent;
+  border: none;
+  width: 100px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.signup-btn {
+  background: transparent;
+  border: 1px solid red;
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  color: red;
+  cursor: pointer;
+}

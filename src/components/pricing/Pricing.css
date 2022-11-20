@@ -1,0 +1,28 @@
+.pricing-section {
+  width: 100%;
+  /* border: 1px solid black; */
+  padding: 50px 0px;
+  background-color: #f6f6f6;
+}
+
+.pricing-heading {
+  font-size: 50px;
+  font-weight: 500;
+}
+.pricing-description {
+  margin: 30px auto;
+  width: 35%;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #4f5665;
+}
+
+.pricing-cards {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 60px;
+}
