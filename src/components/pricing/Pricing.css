@@ -1,6 +1,5 @@
 .pricing-section {
   width: 100%;
-  /* border: 1px solid black; */
   padding: 50px 0px;
   background-color: #f6f6f6;
 }
@@ -19,10 +18,35 @@
 }
 
 .pricing-cards {
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 20px;
   margin-top: 60px;
+  flex-wrap: wrap;
+  gap: 7%;
+  row-gap: 30px;
+}
+
+@media (max-width: 550px) {
+  .pricing-section {
+    width: 100%;
+    padding: 0px 20px;
+    text-align: left;
+  }
+
+  .pricing-heading {
+    font-size: 35px;
+  }
+  .pricing-description {
+    margin: 20px auto;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .pricing-cards {
+    padding: 0px;
+    margin-top: 30px;
+  }
 }

@@ -1,0 +1,175 @@
+.slider-container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+.slider-cad-container {
+  display: flex;
+  gap: 40px;
+  margin: auto;
+  overflow: hidden;
+  /* overflow-x: scroll; */
+  width: 100%;
+  scroll-behavior: smooth;
+}
+.slider-cad-container::-webkit-scrollbar {
+  display: none;
+}
+
+.image-container {
+  display: flex;
+  gap: 40px;
+  margin: auto;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+.slider-card {
+  min-width: 400px;
+  height: 220px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 2px solid;
+  background-color: white;
+}
+.slider-user-info {
+  display: flex;
+  text-align: left;
+  gap: 20px;
+  position: relative;
+}
+
+.userImage {
+  width: 50px;
+}
+.slider-userName {
+  font-weight: 700;
+}
+.slider-star {
+  font-weight: 500;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  display: flex;
+  align-items: center;
+}
+.slider-star > img {
+  width: 16px;
+}
+
+.slider-userPlace {
+  color: #4f5665;
+  font-size: 14px;
+}
+.slider-userDescription {
+  text-align: left;
+  line-height: 26px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.slider-bottom {
+  height: 150px;
+  display: flex;
+  padding: 10px 100px;
+}
+.slider-dots-div {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.slider-dots {
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  /* background-color: ; */
+}
+
+.slider-btn-box {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+.slider-prvs-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  border: 1px solid;
+}
+.slider-next-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  transform: rotate(180deg);
+  border: 1px solid;
+}
+
+@media (max-width: 550px) {
+  .slider-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .slider-cad-container {
+    gap: 10px;
+  }
+
+  .image-container {
+    gap: 10px;
+  }
+
+  .slider-card {
+    min-width: 200px;
+    height: 350px;
+    padding: 20px 10px;
+  }
+  .slider-user-info {
+    text-align: left;
+    display: grid;
+    grid-template-areas:
+      "star star star"
+      "pic info info"
+      "pic info info";
+  }
+
+  .slider-user-detail {
+    grid-area: info;
+  }
+
+  .userImage {
+    width: 40px;
+    grid-area: pic;
+  }
+
+  .slider-star {
+    grid-area: star;
+  }
+
+  .slider-bottom {
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+  .slider-dots-div {
+    flex-grow: 0.6;
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+  .slider-dots {
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+  }
+
+  .slider-btn-box {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

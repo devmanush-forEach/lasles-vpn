@@ -8,20 +8,22 @@ const About = () => {
   return (
     <>
       <section className="about-section">
-        <div className="left-part">
-          <div className="about-heading">
-            Want anything to be easy with{" "}
-            <span className="head-name">LaslesVPN</span>.
+        <div className="about-upper">
+          <div className="left-part">
+            <div className="about-heading">
+              Want anything to be easy with{" "}
+              <span className="head-name">LaslesVPN</span>.
+            </div>
+            <div className="about-description">
+              Provide a network for all your needs with ease and fun using{" "}
+              <span className="name">LaslesVPN</span> discover interesting
+              features from us.
+            </div>
+            <button className="get-start-btn">Get Started</button>
           </div>
-          <div className="about-description">
-            Provide a network for all your needs with ease and fun using{" "}
-            <span className="name">LaslesVPN</span> discover interesting
-            features from us.
+          <div className="right-part">
+            <img src={aboutLogo} alt="about-logo" width="100%" />
           </div>
-          <button className="get-start-btn">Get Started</button>
-        </div>
-        <div className="right-part">
-          <img src={aboutLogo} alt="about-logo" width="100%" />
         </div>
         <div className="about-bottom">
           <div className="about--bottom-cards border-right">

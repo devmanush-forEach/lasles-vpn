@@ -1,20 +1,29 @@
 .about-section {
   width: 100%;
-  height: 80vh;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 30px;
 }
 
+.about-upper {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: 90vw;
+  max-width: 1536px;
+  justify-content: space-around;
+  margin: auto;
+}
+
 .left-part {
-  width: 40%;
+  width: 50%;
+  min-width: 400px;
   text-align: left;
   padding: 40px;
 }
 
 .about-heading {
-  font-size: 70px;
+  font-size: 4vw;
   font-weight: 600;
 }
 
@@ -24,7 +33,7 @@
 
 .about-description {
   margin: 30px 0px;
-  font-size: 22px;
+  font-size: 1.5vw;
   font-weight: 400;
   letter-spacing: 1px;
   text-align: left;
@@ -35,7 +44,8 @@
 }
 
 .right-part {
-  width: 40%;
+  width: 50%;
+  min-width: 400px;
   padding: 20px;
 }
 
@@ -102,4 +112,107 @@
 .card-text {
   color: #4f5665;
   font-weight: 600;
+}
+@media (max-width: 900px) {
+  .about-section {
+    margin-top: 0px;
+  }
+
+  .about-upper {
+    width: 90%;
+    margin: 10px;
+  }
+
+  .left-part {
+    min-width: 90%;
+  }
+
+  .about-heading {
+    font-size: 45px;
+  }
+
+  .about-description {
+    font-size: 18px;
+  }
+  .right-part {
+    min-width: 90%;
+  }
+}
+
+@media (max-width: 550px) {
+  .about-section {
+    margin-top: 0px;
+  }
+
+  .about-upper {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .left-part {
+    min-width: 100%;
+    text-align: left;
+    padding: 10px;
+  }
+
+  .about-heading {
+    font-size: 40px;
+    font-weight: 600;
+    width: 100%;
+  }
+
+  .about-description {
+    margin: 20px 0px;
+    font-size: 18px;
+  }
+  .right-part {
+    min-width: 100%;
+  }
+
+  .get-start-btn {
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .about-bottom {
+    width: 100%;
+    height: 100px;
+    padding: 20px 10px;
+  }
+
+  .about--bottom-cards {
+    width: 31%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .border-right {
+    border-right: 2px solid #eeeff2;
+  }
+  .border-left {
+    border-left: 2px solid #eeeff2;
+  }
+
+  .bottom-card-container {
+    display: flex;
+    gap: 20px;
+  }
+
+  .bottom-icon-div {
+    width: 25px;
+    height: 25px;
+  }
+
+  .bottom-icon-div > img {
+    width: 15px;
+  }
+
+  .card-number {
+    font-size: 15px;
+  }
+  .card-text {
+    font-size: 10px;
+  }
 }
