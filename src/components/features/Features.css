@@ -108,6 +108,7 @@
   .features-right-part {
     min-width: 100%;
     padding: 20px 10px;
+    display: block;
   }
 
   .features-heading {
