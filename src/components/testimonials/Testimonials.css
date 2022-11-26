@@ -1,7 +1,6 @@
 .testimonial-section {
   width: 100%;
   padding: 50px 0px;
-  background-color: #f6f6f6;
 }
 
 .testimonial-heading {
@@ -30,6 +29,7 @@
   background-color: white;
   border-radius: 10px;
   flex-wrap: wrap;
+  box-shadow: 0px 80px 100px rgba(0, 0, 0, 0.1);
 }
 
 .subscribe-container > .left {

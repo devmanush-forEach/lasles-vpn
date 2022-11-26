@@ -21,13 +21,7 @@ const Plancard = ({ cardData }) => {
           <span className="card-price">{cardData.price}</span>
           {cardData.price !== "Free" && " / mo"}
         </div>
-        <button
-          className={
-            cardData.price === "$12" ? "contained-btn" : "outlined-btn"
-          }
-        >
-          Select
-        </button>
+        <button className="outlined-btn">Select</button>
       </div>
     </div>
   );

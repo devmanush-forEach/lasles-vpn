@@ -63,14 +63,21 @@
   letter-spacing: 1px;
   font-weight: 900;
 }
+.plan-card:hover {
+  border: 2px solid #f53838;
+}
+
+.plan-card:hover .outlined-btn {
+  color: white;
+  background: #f53838;
+  box-shadow: 0px 20px 40px rgba(245, 56, 56, 0.35);
+}
 .contained-btn {
   border: 3px solid #f53838;
   letter-spacing: 1px;
   width: 60%;
   height: 50px;
   border-radius: 30px;
-  color: white;
-  background: #f53838;
   font-size: 18px;
   font-weight: 900;
 }
