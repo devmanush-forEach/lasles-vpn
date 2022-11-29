@@ -5,7 +5,7 @@ import FeaturesIcon from "../../Assets/Features-icon.svg";
 const Features = () => {
   return (
     <>
-      <section className="features-section">
+      <section className="features-section" id="features">
         <div className="features-left-part">
           <img alt="" src={FeaturesIcon} width="100%" />
         </div>
