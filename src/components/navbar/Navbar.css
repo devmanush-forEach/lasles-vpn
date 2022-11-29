@@ -1,7 +1,10 @@
 .header {
   height: 80px;
-  position: sticky;
+  position: fixed;
+  top: 0%;
   z-index: 100;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .navbar-container {
   height: 80px;
@@ -37,6 +40,19 @@
 }
 .nav-list-item {
   cursor: pointer;
+  text-decoration: none;
+}
+.nav-list-item:hover > .link-text {
+  color: blue;
+}
+.link-text {
+  color: black;
+  text-decoration: none;
+  transition: all 0.6s;
+}
+.active-link {
+  color: #f53838;
+  text-decoration: underline 2px solid #f53838;
 }
 
 .rightNav {
@@ -57,14 +73,41 @@
 
 .signup-btn {
   background: transparent;
-  border: 1px solid red;
+  border: 1px solid #f53838;
   width: 100px;
   height: 35px;
   border-radius: 20px;
-  color: red;
+  color: #f53838;
   cursor: pointer;
 }
 
+.user_intro_div {
+  width: 120px;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.user_box {
+  position: absolute;
+  width: 100%;
+  top: 21px;
+  display: none;
+}
+.user_intro_div:hover .user_box {
+  display: block;
+}
+.user_box:hover {
+  display: block;
+}
+.user_box > ul {
+  margin: 0%;
+  padding: 10px;
+  margin-top: 30px;
+  list-style: none;
+  text-align: left;
+  background-color: white;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+}
 .hamburger-icon {
   width: 200px;
   /* border: 1px solid red; */

@@ -1,22 +1,19 @@
 import "./App.css";
-import About from "./components/about/About";
-import Features from "./components/features/Features";
-import Footer from "./components/footer/Footer";
-import MapContainer from "./components/mapContainer/MapContainer";
-import Navbar from "./components/navbar/Navbar";
-import Pricing from "./components/pricing/Pricing";
-import Testimonials from "./components/testimonials/Testimonials";
+import Home from "./components/home/Home";
+import Signin from "./components/signin/Signin";
+import Signup from "./components/signup/Signup";
+import { Routes, Route } from "react-router-dom";
+import UserProfile from "./components/userProfile/UserProfile";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <About />
-      <Features />
-      <Pricing />
-      <MapContainer />
-      <Testimonials />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<UserProfile />} />
+      </Routes>
     </div>
   );
 }

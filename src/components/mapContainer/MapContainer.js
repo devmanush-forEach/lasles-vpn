@@ -6,7 +6,7 @@ import Logos from "./Logos";
 const MapContainer = () => {
   return (
     <>
-      <section className="mapSection">
+      <section className="mapSection" id="map-container">
         <div className="map-heading">Huge Global Network of Fast VPN</div>
         <div className="map-description">
           See <span>LaslesVPN</span> everywhere to make it easier for you when

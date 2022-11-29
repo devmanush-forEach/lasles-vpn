@@ -6,7 +6,7 @@ import LaslesVPN from "../../Assets/2020LaslesVPN.svg";
 const Footer = () => {
   return (
     <>
-      <footer>
+      <footer id="footer">
         <div className="left">
           <img src={logo} alt="" className="footer-logo" />
           {FooterData.description()}

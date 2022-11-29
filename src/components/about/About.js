@@ -7,7 +7,7 @@ import OptionIcon from "../../Assets/Option-icon.svg";
 const About = () => {
   return (
     <>
-      <section className="about-section">
+      <section className="about-section" id="about">
         <div className="about-upper">
           <div className="left-part">
             <div className="about-heading">

@@ -1,0 +1,64 @@
+.signin-box {
+  z-index: 1111111;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0%;
+  display: grid;
+  place-items: center;
+  background-color: whitesmoke;
+}
+
+.signin-form {
+  /* border: 2px solid red; */
+  /* height: 300px; */
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.singnin-welcome {
+  display: block;
+  font-size: 30px;
+  font-style: oblique;
+  font-weight: 600;
+  text-shadow: 2px 2px rgb(248, 60, 60);
+}
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+}
+.input-group > label {
+  position: absolute;
+  z-index: 11;
+  bottom: 20%;
+  color: aquamarine;
+}
+
+.input-field {
+  height: 50px;
+  background-color: aliceblue;
+  width: 300px;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input-field:focus {
+  border: none;
+  border-bottom: 2px solid red;
+}
+
+.input-field:focus .input-group > label {
+  color: red;
+  top: -20px;
+}
+.form-submit-btn {
+  width: 100%;
+  cursor: pointer;
+}

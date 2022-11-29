@@ -5,7 +5,7 @@ import Plancard from "../planCard/Plancard";
 const Pricing = () => {
   return (
     <>
-      <section className="pricing-section">
+      <section className="pricing-section" id="pricing">
         <div className="pricing-heading">Choose Your Plan</div>
         <div className="pricing-description">
           Let's choose the package that is best for you and explore it happily
