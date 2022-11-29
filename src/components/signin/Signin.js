@@ -3,7 +3,7 @@ import "./Signin.css";
 import axios from "axios";
 import { setCookie } from "../../middlewares/setCookie";
 import { useNavigate } from "react-router-dom";
-
+import { serverurl } from "../../common/constants";
 const Signin = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({ email: "", password: "" });
@@ -17,14 +17,10 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data: res } = await axios.post(
-      "https://lasles-vpn-server.herokuapp.com/signin",
-      data,
-      {
-        withCredentials: true,
-        credentials: "include",
-      }
-    );
+    const { data: res } = await axios.post(`${serverurl}/signin`, data, {
+      withCredentials: true,
+      credentials: "include",
+    });
 
     if (res.token) {
       navigate("/");

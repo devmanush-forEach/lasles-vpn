@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { getCookie } from "../../middlewares/setCookie";
 import axios from "axios";
+import { serverurl } from "../../common/constants";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -22,13 +23,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await axios.get(
-        "https://lasles-vpn-server.herokuapp.com/user",
-        {
-          withCredentials: true,
-          credentials: true,
-        }
-      );
+      const data = await axios.get(`${serverurl}/user`, {
+        withCredentials: true,
+        credentials: true,
+      });
       if (data.status === 200) {
         setUser(data.data.user);
       }
@@ -38,7 +36,7 @@ const Navbar = () => {
 
   const handleSignout = async () => {
     const res = await axios.post(
-      "https://lasles-vpn-server.herokuapp.com/signout",
+      `${serverurl}/signout`,
       {},
       {
         withCredentials: true,
