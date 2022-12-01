@@ -1,4 +1,8 @@
 .signin-box {
+<<<<<<< HEAD
+=======
+  z-index: 1111111;
+>>>>>>> 86cdc3382d62d5e6c73aeb99c0985c80cf0161b8
   display: flex;
   width: 100vw;
   height: 100vh;
