@@ -1,17 +1,19 @@
-import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { axiosPost } from "../../common/axiosRequests";
+import { show_Notification } from "../../redux/actions/notificationBar.actions";
+import Navbar from "../navbar/Navbar";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [data, setData] = useState({
     name: "",
     email: "",
     phone: "",
     password: "",
   });
-
-  const [isError, setIsError] = useState(false);
 
   const updateData = (e) => {
     const ele = e.target;
@@ -23,21 +25,21 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:4000/signup", data, {
-      withCredentials: true,
-      mode: "no-cors",
-    });
-    console.log(res);
+    const res = await axiosPost("/signup", data);
 
     if (res.status === 201) {
+      dispatch(show_Notification({ message: "User registered Successfully." }));
       navigate("/");
     } else {
-      setIsError(true);
+      dispatch(
+        show_Notification({ message: "ERR_CONNECTION_REFUSED", isError: true })
+      );
     }
   };
 
   return (
     <>
+      <Navbar />
       <div className="signin-box">
         <form className="signin-form">
           <input

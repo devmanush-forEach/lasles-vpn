@@ -10,8 +10,8 @@ const Plancard = ({ cardData }) => {
       </div>
       <div className="plan-card-title">{cardData.title}</div>
       <ul className="plan-card-points-list">
-        {cardData.points?.map((point) => (
-          <li className="plan-points">
+        {cardData.points?.map((point, index) => (
+          <li className="plan-points" key={`${index}f`}>
             <img alt="" src={Tick} /> {point}
           </li>
         ))}

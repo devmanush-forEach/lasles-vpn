@@ -4,6 +4,8 @@ import Signin from "./components/signin/Signin";
 import Signup from "./components/signup/Signup";
 import { Routes, Route } from "react-router-dom";
 import UserProfile from "./components/userProfile/UserProfile";
+import NotificationBar from "./components/notificationBar/NotificationBar";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<UserProfile />} />
       </Routes>
+      <NotificationBar />
     </div>
   );
 }

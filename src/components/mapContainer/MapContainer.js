@@ -16,8 +16,8 @@ const MapContainer = () => {
           <img src={Global} alt="" width="100%" />
         </div>
         <div className="logos-container">
-          {Logos.map((logo) => (
-            <img alt="" src={logo} className="logoImg" />
+          {Logos.map((logo, index) => (
+            <img alt="" src={logo} className="logoImg" key={`${index}e`} />
           ))}
         </div>
       </section>

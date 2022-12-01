@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "./Signin.css";
-import axios from "axios";
-import { setCookie } from "../../middlewares/setCookie";
 import { useNavigate } from "react-router-dom";
+import { axiosPost } from "../../common/axiosRequests";
+import { useDispatch } from "react-redux";
+import { show_Notification } from "../../redux/actions/notificationBar.actions";
+import Navbar from "../navbar/Navbar";
 
 const Signin = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [data, setData] = useState({ email: "", password: "" });
-  const [isError, setIsError] = useState(false);
   const updateData = (e) => {
     const ele = e.target;
     const name = ele?.name;
@@ -17,23 +19,20 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data: res } = await axios.post(
-      "https://lasles-vpn-server.herokuapp.com/signin",
-      data,
-      {
-        withCredentials: true,
-        credentials: "include",
-      }
-    );
+    const { data: res } = await axiosPost("/signin", data);
 
     if (res.token) {
       navigate("/");
+      dispatch(show_Notification({ message: "Login Successfull!!" }));
     } else {
-      setIsError(true);
+      dispatch(
+        show_Notification({ message: "ERR_CONNECTION_REFUSED", isError: true })
+      );
     }
   };
   return (
     <>
+      <Navbar />
       <div className="signin-box">
         <form className="signin-form" onSubmit={handleSubmit}>
           <span className="singnin-welcome">Welcome Back </span>
@@ -72,9 +71,6 @@ const Signin = () => {
             Login
           </button>
         </form>
-        {/* {isError && */}
-        <div>Invalid User Creadentials</div>
-        {/* // } */}
       </div>
     </>
   );

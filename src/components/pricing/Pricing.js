@@ -12,8 +12,8 @@ const Pricing = () => {
           and cheerfully.
         </div>
         <div className="pricing-cards">
-          {PlansData?.map((cardData) => (
-            <Plancard cardData={cardData} />
+          {PlansData?.map((cardData, index) => (
+            <Plancard cardData={cardData} key={`${index}g`} />
           ))}
         </div>
       </section>

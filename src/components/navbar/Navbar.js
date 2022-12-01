@@ -2,15 +2,20 @@ import "./Navbar.css";
 import Logo from "../../Assets/Logo.svg";
 import { useEffect, useState } from "react";
 import Bars from "../../Assets/Bars.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { getCookie } from "../../middlewares/setCookie";
-import axios from "axios";
+import { axiosGet, axiosPost } from "../../common/axiosRequests";
+import { useDispatch, useSelector } from "react-redux";
+import { set_User } from "../../redux/actions/user.actions";
+import { show_Notification } from "../../redux/actions/notificationBar.actions";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [activeElement, setActiveElement] = useState("about");
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  const { user } = useSelector((state) => state.user);
 
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -22,43 +27,44 @@ const Navbar = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await axios.get(
-        "https://lasles-vpn-server.herokuapp.com/user",
-        {
-          withCredentials: true,
-          credentials: true,
-        }
-      );
+      const data = await axiosGet("/user");
       if (data.status === 200) {
-        setUser(data.data.user);
+        dispatch(set_User(data.data.user));
+      } else {
+        dispatch(
+          show_Notification({
+            message: "Forbidden user Please Login.",
+            isError: true,
+          })
+        );
       }
     };
     getData();
   }, []);
 
   const handleSignout = async () => {
-    const res = await axios.post(
-      "https://lasles-vpn-server.herokuapp.com/signout",
-      {},
-      {
-        withCredentials: true,
-        credentials: true,
-      }
-    );
+    const res = await axiosPost("/signout", {});
+
     if (res.status === 200) {
-      setUser(null);
+      dispatch(set_User(null));
+      dispatch(show_Notification({ message: "Logged out successfully!!" }));
+    } else {
+      dispatch(
+        show_Notification({ message: "ERR_CONNECTION_REFUSED", isError: true })
+      );
     }
+    navigate("/");
+    setShowMobileMenu(false);
   };
 
-  console.log(user);
   return (
     <>
       <header className="header">
         <div className="navbar-container">
           <div className="leftNav">
-            <HashLink className="link-text" to="#about">
+            <Link to="/">
               <img src={Logo} alt="logo" className="nav-logo" />
-            </HashLink>
+            </Link>
           </div>
           <div className="midNav">
             <ul className="nav-list">
@@ -177,6 +183,7 @@ const Navbar = () => {
             )}
           </div>
           <div className="hamburger-icon">
+            {user && <div>{user.name}</div>}
             <img src={Bars} alt="" onClick={toggleMobileMenu} />
           </div>
         </div>
@@ -217,23 +224,37 @@ const Navbar = () => {
               Help
             </HashLink>
           </li>
-          <li
-            className="nav-list-item"
-            style={{ background: "white", color: "rgb(245,56,56)" }}
-          >
-            <Link className="link-text" to="/signin">
-              <Link className="link-text" to="/signin">
-                Signin
-              </Link>
-            </Link>
-          </li>
-          <li className="nav-list-item">
-            <Link className="link-text" to="/signup">
-              <Link className="link-text" to="/signup">
-                Signup
-              </Link>
-            </Link>
-          </li>
+          {user ? (
+            <>
+              <li
+                className="nav-list-item"
+                style={{ background: "white", color: "rgb(245,56,56)" }}
+              >
+                <Link className="link-text" to="/profile">
+                  View Profile
+                </Link>
+              </li>
+              <li className="nav-list-item" onClick={handleSignout}>
+                Signout
+              </li>
+            </>
+          ) : (
+            <>
+              <li
+                className="nav-list-item"
+                style={{ background: "white", color: "rgb(245,56,56)" }}
+              >
+                <Link className="link-text" to="/signin">
+                  Signin
+                </Link>
+              </li>
+              <li className="nav-list-item">
+                <Link className="link-text" to="/signup">
+                  Signup
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </>

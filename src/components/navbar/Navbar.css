@@ -47,12 +47,12 @@
 }
 .link-text {
   color: black;
-  text-decoration: none;
   transition: all 0.6s;
+  text-decoration: none;
 }
 .active-link {
   color: #f53838;
-  text-decoration: underline 2px solid #f53838;
+  /* text-decoration: underline 2px solid #f53838; */
 }
 
 .rightNav {
@@ -114,10 +114,16 @@
   display: none;
   align-items: center;
   justify-items: right;
+  grid-template-areas: "username hamicon";
 }
 
 .hamburger-icon > img {
   width: 30px;
+  grid-area: hamicon;
+}
+
+.hamburger-icon > div {
+  grid-area: username;
 }
 
 .mobile-menu-container {

@@ -1,0 +1,32 @@
+.notification_bar {
+  position: fixed;
+  z-index: 1111111;
+  width: 400px;
+  height: 60px;
+  border-radius: 5px;
+  bottom: 30px;
+  right: calc(50% - 200px);
+  border-left: 8px solid;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.notification_msg {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  padding: 10px;
+  justify-content: center;
+  gap: 10px;
+}
+.notification_msg > span {
+  /* background-color: red; */
+}
+.notification_hide {
+  width: 50px;
+  background-color: rgba(50, 205, 50, 0.6);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}

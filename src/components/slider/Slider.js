@@ -11,8 +11,6 @@ const Slider = () => {
   const moveBack = () => {
     const items = SliderData.length;
     if (currentIndex - 1 <= -items) return;
-    console.log(items);
-    console.log(currentIndex);
     setCurrentIndex(currentIndex - 1);
   };
 
@@ -37,8 +35,8 @@ const Slider = () => {
         >
           {SliderData?.map((user, index) => (
             <div
+              key={`${index}h`}
               className="slider-card"
-              key={user.name}
               style={{
                 borderColor: -currentIndex === index ? "#F53838" : "#dddddd",
               }}
@@ -63,6 +61,7 @@ const Slider = () => {
         <div className="slider-dots-div">
           {SliderData?.map((ele, index) => (
             <div
+              key={`${index}i`}
               className="slider-dots"
               style={{
                 background: index === -currentIndex ? "#F53838" : "#dde0e4",
