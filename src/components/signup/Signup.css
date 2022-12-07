@@ -1,0 +1,39 @@
+.label {
+  z-index: 99;
+}
+
+.signup_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signup_form > div {
+  position: relative;
+}
+
+.input-field:focus,
+.input-field:valid {
+  background-color: white;
+}
+
+.input-field:focus ~ .label,
+.input-field:valid ~ .label {
+  background-color: white;
+  transform: translateY(-20px);
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  letter-spacing: 2px;
+  padding: 0px 5px;
+  text-transform: lowercase;
+}
+
+.profile_upload_box {
+  font-size: 20px;
+  color: grey;
+  text-align: left;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+}

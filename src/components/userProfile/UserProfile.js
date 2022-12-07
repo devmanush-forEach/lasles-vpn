@@ -109,8 +109,13 @@ const UserProfile = () => {
                   >
                     Update
                   </button>
-                  <div onClick={toggleIsEdit} className="cancel_btn">
-                    cancel
+                  <div className="cancel_btn">
+                    <button
+                      onClick={toggleIsEdit}
+                      className="update_btn get-start-btn"
+                    >
+                      Cancel
+                    </button>
                   </div>
                 </>
               )}

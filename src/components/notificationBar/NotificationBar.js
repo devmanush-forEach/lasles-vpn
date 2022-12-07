@@ -13,8 +13,6 @@ const NotificationBar = () => {
     (state) => state.notification
   );
 
-  console.log(autohide);
-
   useEffect(() => {
     if (autohide) {
       setTimeout(() => {
@@ -22,8 +20,6 @@ const NotificationBar = () => {
       }, 5000);
     }
   }, [hide]);
-
-  console.log(message);
 
   return (
     <>

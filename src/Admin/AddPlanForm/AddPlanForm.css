@@ -1,0 +1,176 @@
+.add_plan_form_box {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.plan_form {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  justify-content: space-around;
+  row-gap: 30px;
+}
+
+.plan_form > div {
+  position: relative;
+}
+.plan_input {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border: 1px solid gray;
+  padding-left: 10px;
+}
+.label {
+  position: absolute;
+  z-index: 9;
+  color: gray;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: all 0.5s;
+  bottom: 10px;
+  left: 10px;
+}
+
+.plan_input:valid ~ label,
+.plan_input:focus ~ label {
+  transform: translateY(-20px) translateX(10px);
+  background-color: white;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  letter-spacing: 2px;
+  padding: 0px 10px;
+}
+
+.file_upload_btn {
+  width: 500px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+}
+.file_upload_btn {
+  width: 500px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+}
+.file_upload_btn {
+  width: 500px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+}
+.file_upload_btn {
+  width: 500px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+}
+
+.features_div {
+  position: relative;
+  min-width: 400px;
+  padding: 10px;
+  border: 1px solid gray;
+  padding-top: 20px;
+  height: fit-content;
+}
+
+.no_feature_div {
+  position: relative;
+  min-width: 400px;
+  padding: 10px;
+  border: 1px solid gray;
+  height: 40px;
+}
+
+.feature_input_outer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feature_label {
+  position: absolute;
+  z-index: 9;
+  color: gray;
+  text-transform: uppercase;
+  pointer-events: none;
+  top: -12px;
+  left: 20px;
+  height: 20px;
+  background-color: white;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  letter-spacing: 2px;
+  padding: 0px 10px;
+}
+.no_features_label {
+  top: 10px;
+  left: 0px;
+  border: none;
+}
+
+.features_input_box {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 80% 15%;
+  column-gap: 5%;
+  align-items: center;
+}
+
+.plan_features_input {
+  width: 100%;
+}
+
+.feature_add_btn_div {
+  height: 30px;
+  position: relative;
+}
+
+.addButton {
+  height: 20px;
+  width: 60px;
+  border: 2px solid rgba(50, 205, 50, 1);
+  color: rgba(50, 205, 50, 1);
+  background-color: rgb(201, 247, 201);
+  position: absolute;
+  right: 0px;
+  bottom: 10px;
+}
+
+.removeButton {
+  height: 20px;
+  border: 2px solid rgb(245, 56, 56);
+  outline: none;
+  background-color: rgb(252, 193, 193);
+  color: rgb(245, 56, 56);
+}
+
+.file_upload_btn {
+  width: 500px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+}
+
+.image_uploader_box {
+  display: flex;
+  justify-content: center;
+}
+
+.add_plan_sbmt_btn_div {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.add_plan_sbmt_btn_div > button {
+  height: 40px;
+  width: 200px;
+}

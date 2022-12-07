@@ -87,6 +87,11 @@
   position: relative;
 }
 
+.navbar_profile_image {
+  width: 30px;
+  border: 1px solid red;
+}
+
 .user_box {
   position: absolute;
   width: 100%;
@@ -128,7 +133,7 @@
 
 .mobile-menu-container {
   z-index: 1000;
-  background: rgba(209, 7, 7, 0.6);
+  background: rgba(209, 7, 7, 1);
   position: fixed;
   width: 100%;
   text-align: left;

@@ -67,3 +67,63 @@
   height: 20px;
   cursor: pointer;
 }
+
+@media (max-width: 550px) {
+  .user_profile_main {
+    height: fit-content;
+    display: block;
+    padding: 20px;
+    height: 100vh;
+  }
+
+  .user_profile_main > div {
+    width: 100%;
+    border-radius: 0px;
+    flex-direction: column;
+    position: relative;
+    height: fit-content;
+    padding: 10px;
+  }
+
+  .user_dp {
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .user_dp > img {
+    border-radius: 50%;
+  }
+
+  .user_info_div {
+    padding: 20px;
+    position: initial;
+  }
+  .edit_icon_div {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .edit_icon {
+    height: 20px;
+    width: 20px;
+  }
+
+  .user_edit_form {
+    width: 100%;
+  }
+
+  .disabled_input {
+    height: 40px;
+  }
+
+  .cancel_btn {
+    position: initial;
+    height: 40px;
+    width: 100%;
+  }
+}

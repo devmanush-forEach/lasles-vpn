@@ -1,0 +1,53 @@
+.admin_page_div {
+  width: 100vw;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 10% 0.6fr 2fr 10%;
+  padding-top: 100px;
+  text-align: left;
+}
+
+.admin_left_box {
+  grid-column: 2/3;
+  padding: 20px;
+  border-right: 1px solid gray;
+}
+
+.admin_head {
+  padding-left: 10px;
+}
+.admin_head > img {
+  height: 40px;
+}
+
+.admin_right_box {
+  padding: 20px;
+}
+
+.left_admin_list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.active_list_item {
+  border-left: 5px solid black;
+  background-color: whitesmoke;
+}
+
+.left_admin_list > li {
+  height: 25px;
+  color: grey;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.left_admin_list > li:hover {
+  color: black;
+  font-size: 18px;
+}

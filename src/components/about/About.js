@@ -3,6 +3,7 @@ import aboutLogo from "../../Assets/About-icon.svg";
 import UserRedIcon from "../../Assets/User-red.svg";
 import LocationRedIcon from "../../Assets/Red-location-icon.svg";
 import OptionIcon from "../../Assets/Option-icon.svg";
+import { Link } from "react-router-dom";
 
 const About = () => {
   return (
@@ -19,7 +20,14 @@ const About = () => {
               <span className="name">LaslesVPN</span> discover interesting
               features from us.
             </div>
-            <button className="get-start-btn">Get Started</button>
+            <button className="get-start-btn">
+              <Link
+                style={{ color: "white", textDecoration: "none" }}
+                to="/subscribe"
+              >
+                Get Started
+              </Link>
+            </button>
           </div>
           <div className="right-part">
             <img src={aboutLogo} alt="about-logo" width="100%" />

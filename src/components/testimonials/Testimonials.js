@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Slider from "../slider/Slider";
 import "./Testimonials.css";
 
@@ -22,7 +23,14 @@ const Testimonials = () => {
           </div>
         </div>
         <div className="right">
-          <button className="get-start-btn">Subscribe Now</button>
+          <button className="get-start-btn">
+            <Link
+              style={{ color: "white", textDecoration: "none" }}
+              to="/subscribe"
+            >
+              Subscribe Now
+            </Link>
+          </button>
         </div>
       </div>
     </section>

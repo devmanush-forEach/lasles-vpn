@@ -14,8 +14,11 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [activeElement, setActiveElement] = useState("about");
-  // const [user, setUser] = useState(null);
+
   const { user } = useSelector((state) => state.user);
+
+  const profile = user?.profile;
+  console.log(profile);
 
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -76,7 +79,7 @@ const Navbar = () => {
                       ? "link-text active-link"
                       : "link-text"
                   }
-                  to="#about"
+                  to="/#about"
                   onClick={(e) => {
                     changeActiveElement(e.target);
                   }}
@@ -92,7 +95,7 @@ const Navbar = () => {
                       ? "link-text active-link"
                       : "link-text"
                   }
-                  to="#features"
+                  to="/#features"
                   onClick={(e) => {
                     changeActiveElement(e.target);
                   }}
@@ -108,7 +111,7 @@ const Navbar = () => {
                       ? "link-text active-link"
                       : "link-text"
                   }
-                  to="#pricing"
+                  to="/#pricing"
                   onClick={(e) => {
                     changeActiveElement(e.target);
                   }}
@@ -124,7 +127,7 @@ const Navbar = () => {
                       ? "link-text active-link"
                       : "link-text"
                   }
-                  to="#testimonials"
+                  to="/#testimonials"
                   onClick={(e) => {
                     changeActiveElement(e.target);
                   }}
@@ -140,7 +143,7 @@ const Navbar = () => {
                       ? "link-text active-link"
                       : "link-text"
                   }
-                  to="#footer"
+                  to="/#footer"
                   onClick={(e) => {
                     changeActiveElement(e.target);
                   }}
@@ -166,9 +169,20 @@ const Navbar = () => {
               </>
             ) : (
               <div className="user_intro_div">
+                {/* <img
+                  src={profile}
+                  alt=""
+                  // height="30px"
+                  className="navbar_profile_image"
+                /> */}
                 {user.name}
                 <div className="user_box">
                   <ul>
+                    <li>
+                      <Link className="link-text" to="/adminPage">
+                        Admin Page
+                      </Link>
+                    </li>
                     <li>
                       <Link className="link-text" to="/profile">
                         View Profile
@@ -194,7 +208,7 @@ const Navbar = () => {
       >
         <ul className="mobile-menu-list">
           <li className="nav-list-item">
-            <HashLink className="link-text" to="#about">
+            <HashLink className="link-text" to="/#about">
               About
             </HashLink>
           </li>
@@ -202,12 +216,12 @@ const Navbar = () => {
             className="nav-list-item"
             style={{ background: "white", color: "rgb(245,56,56)" }}
           >
-            <HashLink className="link-text" to="#features">
+            <HashLink className="link-text" to="/#features">
               Features
             </HashLink>
           </li>
           <li className="nav-list-item">
-            <HashLink className="link-text" to="#pricing">
+            <HashLink className="link-text" to="/#pricing">
               Pricing
             </HashLink>
           </li>
@@ -215,17 +229,22 @@ const Navbar = () => {
             className="nav-list-item"
             style={{ background: "white", color: "rgb(245,56,56)" }}
           >
-            <HashLink className="link-text" to="#testimonials">
+            <HashLink className="link-text" to="/#testimonials">
               Testimonials
             </HashLink>
           </li>
           <li className="nav-list-item">
-            <HashLink className="link-text" to="#footer">
+            <HashLink className="link-text" to="/#footer">
               Help
             </HashLink>
           </li>
           {user ? (
             <>
+              <li className="nav-list-item">
+                <Link className="link-text" to="/adminPage">
+                  Admin Page
+                </Link>
+              </li>
               <li
                 className="nav-list-item"
                 style={{ background: "white", color: "rgb(245,56,56)" }}

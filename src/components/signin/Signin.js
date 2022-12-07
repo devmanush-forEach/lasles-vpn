@@ -5,6 +5,7 @@ import { axiosPost } from "../../common/axiosRequests";
 import { useDispatch } from "react-redux";
 import { show_Notification } from "../../redux/actions/notificationBar.actions";
 import Navbar from "../navbar/Navbar";
+import ImageUpload from "../ImageUpload/ImageUpload";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,6 @@ const Signin = () => {
         <form className="signin-form" onSubmit={handleSubmit}>
           <span className="singnin-welcome">Welcome Back </span>
           <div className="input-group">
-            {/* <label for="email">Email</label> */}
             <input
               className="input-field"
               onChange={(e) => {
@@ -45,13 +45,14 @@ const Signin = () => {
               }}
               type="text"
               name="email"
-              required
+              required="required"
               value={data.email}
-              placeholder="Email"
             />
+            <label htmlFor="email" className="label">
+              Email
+            </label>
           </div>
           <div className="input-group">
-            {/* <label for="password">Password</label> */}
             <input
               className="input-field"
               onChange={(e) => {
@@ -59,10 +60,12 @@ const Signin = () => {
               }}
               type="password"
               name="password"
-              required
+              required="required"
               value={data.password}
-              placeholder="Password"
             />
+            <label htmlFor="password" className="label">
+              Password
+            </label>
           </div>
           <button
             onClick={handleSubmit}

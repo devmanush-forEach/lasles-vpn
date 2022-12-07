@@ -1,11 +1,12 @@
 .notification_bar {
   position: fixed;
   z-index: 1111111;
-  width: 400px;
+  min-width: 400px;
+  max-width: 500px;
   height: 60px;
   border-radius: 5px;
   bottom: 30px;
-  right: calc(50% - 200px);
+  right: calc(50% - 250px);
   border-left: 8px solid;
   display: flex;
   justify-content: space-between;

@@ -6,12 +6,9 @@
   top: 0%;
   display: grid;
   place-items: center;
-  background-color: whitesmoke;
 }
 
 .signin-form {
-  /* border: 2px solid red; */
-  /* height: 300px; */
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -30,33 +27,19 @@
   text-align: left;
   position: relative;
 }
-.input-group > label {
-  position: absolute;
-  z-index: 11;
-  bottom: 20%;
-  color: aquamarine;
-}
 
 .input-field {
-  height: 50px;
-  background-color: aliceblue;
-  width: 300px;
+  height: 40px;
+  width: 400px;
   padding: 5px;
   border: none;
-  border-bottom: 1px solid black;
+  border: 1px solid black;
   outline: none;
-  transition: all 0.3s;
+  transition: all 0.5s;
+  background-color: white;
+  padding-left: 10px;
 }
 
-.input-field:focus {
-  border: none;
-  border-bottom: 2px solid red;
-}
-
-.input-field:focus .input-group > label {
-  color: red;
-  top: -20px;
-}
 .form-submit-btn {
   width: 100%;
   cursor: pointer;

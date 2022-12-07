@@ -5,7 +5,9 @@ import Signup from "./components/signup/Signup";
 import { Routes, Route } from "react-router-dom";
 import UserProfile from "./components/userProfile/UserProfile";
 import NotificationBar from "./components/notificationBar/NotificationBar";
-import Navbar from "./components/navbar/Navbar";
+import SubscribePage from "./components/subscribePage/SubscribePage";
+import PaymentPage from "./components/paymentPage/PaymentPage";
+import AdminPage from "./Admin/AdminPage/AdminPage";
 
 function App() {
   return (
@@ -15,6 +17,9 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/subscribe" element={<SubscribePage />} />
+        <Route path="/paymentPage" element={<PaymentPage />} />
+        <Route path="/adminPage" element={<AdminPage />} />
       </Routes>
       <NotificationBar />
     </div>

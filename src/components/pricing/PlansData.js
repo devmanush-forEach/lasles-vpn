@@ -2,16 +2,17 @@ import FreeIcon from "../../Assets/Free.svg";
 import StandardIcon from "../../Assets/Standard.svg";
 import PremiumIcon from "../../Assets/Premium.svg";
 
-function card(title, points, price, icon) {
+function card(title, points, price, icon, quality) {
   this.title = title;
   this.points = points;
   this.price = price;
   this.icon = icon;
+  this.quality = quality;
 }
 
 const PlansData = [
   new card(
-    "Free Plan",
+    "Free",
     [
       "Unlimited Bandwidth",
       "Encrypted Connection",
@@ -19,10 +20,11 @@ const PlansData = [
       "Works on All Devices",
     ],
     "Free",
-    FreeIcon
+    FreeIcon,
+    "Good"
   ),
   new card(
-    "Standard Plan",
+    "Standard",
     [
       "Unlimited Bandwidth",
       "Encrypted Connection",
@@ -31,10 +33,11 @@ const PlansData = [
       "Connect Anywhere",
     ],
     "$9",
-    StandardIcon
+    StandardIcon,
+    "Better"
   ),
   new card(
-    "Premium Plan",
+    "Premium",
     [
       "Unlimited Bandwidth",
       "Encrypted Connection",
@@ -44,7 +47,8 @@ const PlansData = [
       "Get New Features",
     ],
     "$12",
-    PremiumIcon
+    PremiumIcon,
+    "Best"
   ),
 ];
 
