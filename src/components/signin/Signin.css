@@ -77,3 +77,29 @@
   width: 100%;
   cursor: pointer;
 }
+
+@media (max-width: 1000px) {
+  .signin-box {
+    grid-template-columns: 1fr;
+  }
+
+  .signin-box > div:first-child {
+    display: none;
+  }
+  .signin-form {
+    width: 70vw;
+  }
+  .input-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .signin-box {
+    width: 100vw;
+  }
+  .signin-form {
+    padding: 0%;
+    width: 80vw;
+  }
+}

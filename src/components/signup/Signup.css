@@ -52,3 +52,32 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media (max-width: 1000px) {
+  .signup-box {
+    grid-template-columns: 1fr;
+  }
+
+  .signup-box > div:first-child {
+    display: none;
+  }
+  .signup-form {
+    width: 70vw;
+  }
+  .input-field {
+    width: 60vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .signup-box {
+    width: 100vw;
+  }
+  .signup-form {
+    padding: 0%;
+    width: 80vw;
+  }
+  .input-field {
+    width: 80vw;
+  }
+}
