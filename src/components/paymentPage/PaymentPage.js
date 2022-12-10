@@ -85,28 +85,30 @@ const PaymentPage = () => {
     <>
       <Navbar />
       <section className="payment_page_section">
-        <div className="payment_plan_card">
-          <div className="payment_plan_list">
-            Title : <span>{plan?.title} Plan</span>
+        <div className="payment_page_box">
+          <div className="payment_plan_card">
+            <div className="payment_plan_list">
+              Title : <span>{plan?.title} Plan</span>
+            </div>
+            <div className="payment_plan_list">
+              Price : <span>{plan?.price}/mo</span>
+            </div>
           </div>
-          <div className="payment_plan_list">
-            Price : <span>{plan?.price}/mo</span>
-          </div>
-        </div>
-        <div className="payment_methods_div">
-          <div className="payment_heading">Choose How To Pay</div>
-          <div className="payment_methods_box">
-            <button
-              type=""
-              onClick={handlePaymentByRazorPay}
-              disabled={!plan || !user}
-              className="razor_pay_btn"
-            >
-              Pay by RazorPay
-            </button>
-            {/* <button type="" onClick={verifyPayment} className="razor_pay_btn">
+          <div className="payment_methods_div">
+            <div className="payment_heading">Choose How To Pay</div>
+            <div className="payment_methods_box">
+              <button
+                type=""
+                onClick={handlePaymentByRazorPay}
+                disabled={!plan || !user}
+                className="razor_pay_btn"
+              >
+                Pay by RazorPay
+              </button>
+              {/* <button type="" onClick={verifyPayment} className="razor_pay_btn">
               Verify Payment
             </button> */}
+            </div>
           </div>
         </div>
       </section>

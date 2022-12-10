@@ -169,16 +169,16 @@ const AddPlanForm = () => {
               }}
             />
           </div>
+          <div className="add_plan_sbmt_btn_div">
+            <button
+              className="get-start-btn"
+              type="submit"
+              onClick={handleAddPlan}
+            >
+              Add Plan
+            </button>
+          </div>
         </form>
-        <div className="add_plan_sbmt_btn_div">
-          <button
-            className="get-start-btn"
-            type="submit"
-            onClick={handleAddPlan}
-          >
-            Add Plan
-          </button>
-        </div>
       </div>
     </>
   );

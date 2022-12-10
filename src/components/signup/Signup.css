@@ -1,3 +1,18 @@
+.signup-box {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  width: 80vw;
+  height: 70vh;
+  box-shadow: 10px 10px 20px gray;
+  margin: auto;
+  margin-top: 15vh;
+}
+
+.signup-box > div {
+  display: grid;
+  place-items: center;
+}
+
 .label {
   z-index: 99;
 }
@@ -14,7 +29,7 @@
 
 .input-field:focus,
 .input-field:valid {
-  background-color: white;
+  background-color: white !important;
 }
 
 .input-field:focus ~ .label,

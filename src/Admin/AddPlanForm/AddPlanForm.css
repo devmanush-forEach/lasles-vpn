@@ -8,18 +8,19 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: 45% 45%;
   justify-content: space-around;
   row-gap: 30px;
 }
 
 .plan_form > div {
   position: relative;
+  flex-basis: 45%;
+  min-width: 400px;
 }
 .plan_input {
   position: relative;
   width: 100%;
+
   height: 40px;
   border: none;
   outline: none;
@@ -74,7 +75,6 @@
 
 .features_div {
   position: relative;
-  min-width: 400px;
   padding: 10px;
   border: 1px solid gray;
   padding-top: 20px;
@@ -83,7 +83,6 @@
 
 .no_feature_div {
   position: relative;
-  min-width: 400px;
   padding: 10px;
   border: 1px solid gray;
   height: 40px;
@@ -166,8 +165,11 @@
 
 .add_plan_sbmt_btn_div {
   width: 100%;
+  height: 100%;
+  align-self: flex-end;
   display: flex;
   justify-content: end;
+  align-items: flex-end;
 }
 
 .add_plan_sbmt_btn_div > button {

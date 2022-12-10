@@ -5,7 +5,8 @@ import { axiosPost } from "../../common/axiosRequests";
 import { useDispatch } from "react-redux";
 import { show_Notification } from "../../redux/actions/notificationBar.actions";
 import Navbar from "../navbar/Navbar";
-import ImageUpload from "../ImageUpload/ImageUpload";
+import signinImage from "../../Assets/signin.png";
+import { Link } from "react-router-dom";
 
 const Signin = () => {
   const dispatch = useDispatch();
@@ -35,45 +36,70 @@ const Signin = () => {
     <>
       <Navbar />
       <div className="signin-box">
-        <form className="signin-form" onSubmit={handleSubmit}>
-          <span className="singnin-welcome">Welcome Back </span>
-          <div className="input-group">
-            <input
-              className="input-field"
-              onChange={(e) => {
-                updateData(e);
-              }}
-              type="text"
-              name="email"
-              required="required"
-              value={data.email}
-            />
-            <label htmlFor="email" className="label">
-              Email
-            </label>
-          </div>
-          <div className="input-group">
-            <input
-              className="input-field"
-              onChange={(e) => {
-                updateData(e);
-              }}
-              type="password"
-              name="password"
-              required="required"
-              value={data.password}
-            />
-            <label htmlFor="password" className="label">
-              Password
-            </label>
-          </div>
-          <button
-            onClick={handleSubmit}
-            className="form-submit-btn get-start-btn"
+        <div>
+          <img src={signinImage} alt="" width="100%" height="100%" />
+        </div>
+        <div>
+          <form
+            className="signin-form"
+            onSubmit={handleSubmit}
+            autoComplete="off"
           >
-            Login
-          </button>
-        </form>
+            <span className="singnin-welcome">Welcome Back </span>
+            <div className="input-group">
+              <input
+                className="input-field"
+                onChange={(e) => {
+                  updateData(e);
+                }}
+                type="text"
+                name="email"
+                required="required"
+                value={data.email}
+                autoComplete="off"
+              />
+              <label htmlFor="email" className="label">
+                Email
+              </label>
+            </div>
+            <div className="input-group">
+              <input
+                className="input-field"
+                onChange={(e) => {
+                  updateData(e);
+                }}
+                type="password"
+                name="password"
+                required="required"
+                value={data.password}
+                autoComplete="off"
+              />
+              <label htmlFor="password" className="label">
+                Password
+              </label>
+            </div>
+            <button
+              onClick={handleSubmit}
+              className="form-submit-btn get-start-btn"
+            >
+              Login
+            </button>
+          </form>
+          <div className="signin_signup_link_box">
+            <div>
+              Don't have an account. Please{" "}
+              <Link to="/signup" className="link">
+                Signup
+              </Link>
+            </div>
+            <div>
+              Forgot your password. Please
+              <Link to="/signup" className="link">
+                Reset Password
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

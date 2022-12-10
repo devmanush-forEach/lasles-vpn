@@ -14,11 +14,9 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [activeElement, setActiveElement] = useState("about");
+  const [update, setUpdate] = useState(false);
 
   const { user } = useSelector((state) => state.user);
-
-  const profile = user?.profile;
-  console.log(profile);
 
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
@@ -49,16 +47,20 @@ const Navbar = () => {
     const res = await axiosPost("/signout", {});
 
     if (res.status === 200) {
-      dispatch(set_User(null));
       dispatch(show_Notification({ message: "Logged out successfully!!" }));
+      dispatch(set_User(null));
     } else {
       dispatch(
         show_Notification({ message: "ERR_CONNECTION_REFUSED", isError: true })
       );
     }
+    setUpdate(!update);
     navigate("/");
     setShowMobileMenu(false);
   };
+
+  console.log(user);
+  console.log(update);
 
   return (
     <>
@@ -171,8 +173,8 @@ const Navbar = () => {
               <div className="user_intro_div">
                 {/* <img
                   src={profile}
-                  alt=""
-                  // height="30px"
+                  alt="aly"
+                  height="30px"
                   className="navbar_profile_image"
                 /> */}
                 {user.name}
