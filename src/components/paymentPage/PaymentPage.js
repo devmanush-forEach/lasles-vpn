@@ -16,10 +16,14 @@ const PaymentPage = () => {
     // demo data for verification
 
     const resData = {
-      razorpay_order_id: "order_KnwDAaX76RvlgN",
-      razorpay_payment_id: "pay_KnwDISHODnqqcN",
-      razorpay_signature:
-        "0f6aa663f236f90a5a58593c8db37055fb0ac1985fd86ec4cd14dea5efb5e26b",
+      ids: {
+        razorpay_order_id: "order_KnwDAaX76RvlgN",
+        razorpay_payment_id: "pay_KnwDISHODnqqcN",
+        razorpay_signature:
+          "0f6aa663f236f90a5a58593c8db37055fb0ac1985fd86ec4cd14dea5efb5e26b",
+      },
+      amount: 1,
+      planType: "free",
     };
     const res = await axiosPost("/payment/paymentVerification", resData);
 
@@ -63,7 +67,11 @@ const PaymentPage = () => {
       image: logo,
       order_id: order.id,
       handler: function (response) {
-        verifyPayment(response);
+        verifyPayment({
+          ids: response,
+          amount: order.amount,
+          planType: plan.title,
+        });
       },
       prefill: {
         name: user.name,
@@ -105,9 +113,9 @@ const PaymentPage = () => {
               >
                 Pay by RazorPay
               </button>
-              {/* <button type="" onClick={verifyPayment} className="razor_pay_btn">
-              Verify Payment
-            </button> */}
+              <button type="" onClick={verifyPayment} className="razor_pay_btn">
+                Verify Payment
+              </button>
             </div>
           </div>
         </div>

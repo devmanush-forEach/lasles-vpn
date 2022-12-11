@@ -38,6 +38,8 @@ const Navbar = () => {
             isError: true,
           })
         );
+
+        dispatch(set_User(null));
       }
     };
     getData();
