@@ -21,9 +21,11 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data: res } = await axiosPost("/signin", data);
+    const {
+      data: { token },
+    } = await axiosPost("/signin", data);
 
-    if (res.token) {
+    if (token) {
       navigate("/");
       dispatch(show_Notification({ message: "Login Successfull!!" }));
     } else {
