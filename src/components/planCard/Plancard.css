@@ -16,6 +16,7 @@
   font-size: 20px;
   font-weight: 500;
   margin: 30px 0px;
+  text-transform: capitalize;
 }
 .plan-card-points-list {
   list-style: none;

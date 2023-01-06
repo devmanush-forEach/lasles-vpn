@@ -6,12 +6,12 @@ const planReducer = (state = initialState, { type, payload }) => {
     case actionTypes.SET_PLAN:
       return {
         ...state,
-        plan: {
-          title: payload.title,
-          price: payload.price,
-          points: [...payload.points],
-          quality: payload.quality,
-        },
+        plans: payload,
+      };
+    case actionTypes.SET_PURCHASE_PLAN:
+      return {
+        ...state,
+        plan: payload,
       };
 
     default:

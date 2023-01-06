@@ -1,9 +1,9 @@
-import e from "cors";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { axiosPost } from "../../common/axiosRequests";
-import ImageUpload from "../../components/ImageUpload/ImageUpload";
-import { show_Notification } from "../../redux/actions/notificationBar.actions";
+import { axiosPost } from "../../../common/axiosRequests";
+import { uploadImage } from "../../../common/firebase/functions";
+import ImageUpload from "../../../components/ImageUpload/ImageUpload";
+import { show_Notification } from "../../../redux/actions/notificationBar.actions";
 import "./AddPlanForm.css";
 
 const AddPlanForm = () => {
@@ -28,7 +28,6 @@ const AddPlanForm = () => {
     e.preventDefault();
     const name = e.target.name;
     const index = +name[name.length - 1];
-    console.log(index);
     const updated = [...plan.features];
     updated[index] = e.target.value;
 
@@ -42,36 +41,38 @@ const AddPlanForm = () => {
   const removeFeature = (e) => {
     e.preventDefault();
     const index = e.target.getAttribute("index");
-    console.log(index);
     const prevFeatures = [...plan.features];
     prevFeatures.splice(index, 1);
     setPlan({ ...plan, features: prevFeatures });
   };
 
   const handleAddPlan = async (e) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    let formData = new FormData();
+      const res = await uploadImage(plan.icon);
 
-    formData.append("title", plan.title);
-    formData.append("price", plan.price);
-    formData.append("icon", plan.icon);
-    formData.append("quality", plan.quality);
-    formData.append("features", plan.features);
+      const toCreate = {
+        title: plan.title,
+        price: plan.price,
+        features: plan.features,
+        quality: plan.quality,
+        icon: res,
+      };
 
-    const response = await axiosPost("/plan", formData);
-    if (response.status === 201) {
-      dispatch(show_Notification({ message: "Plan added Successfully." }));
-      setPlan({
-        title: "",
-        price: "",
-        features: [],
-        quality: "",
-        icon: "",
-      });
-    }
+      const response = await axiosPost("/plan", toCreate);
+      if (response.status === 201) {
+        dispatch(show_Notification({ message: "Plan added Successfully." }));
+        setPlan({
+          title: "",
+          price: "",
+          features: [],
+          quality: "",
+          icon: "",
+        });
+      }
+    } catch (error) {}
   };
-  console.log(plan);
 
   return (
     <>

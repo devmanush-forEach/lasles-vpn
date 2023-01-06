@@ -1,8 +1,11 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Slider from "../slider/Slider";
 import "./Testimonials.css";
 
 const Testimonials = () => {
+  const { user } = useSelector((state) => state.user);
+
   return (
     <section className="testimonial-section" id="testimonials">
       <div className="testimonial-heading">
@@ -13,26 +16,28 @@ const Testimonials = () => {
         pleasure when using this crazy feature.
       </div>
       <Slider />
-      <div className="subscribe-container">
-        <div className="left">
-          <div className="subscribe-heading">
-            Subscribe Now for Get Special Features!
+      {!user?.subscibedPlan && (
+        <div className="subscribe-container">
+          <div className="left">
+            <div className="subscribe-heading">
+              Subscribe Now for Get Special Features!
+            </div>
+            <div className="subscribe-description">
+              Let's subscribe with us and find the fun.
+            </div>
           </div>
-          <div className="subscribe-description">
-            Let's subscribe with us and find the fun.
+          <div className="right">
+            <button className="get-start-btn">
+              <Link
+                style={{ color: "white", textDecoration: "none" }}
+                to="/subscribe"
+              >
+                Subscribe Now
+              </Link>
+            </button>
           </div>
         </div>
-        <div className="right">
-          <button className="get-start-btn">
-            <Link
-              style={{ color: "white", textDecoration: "none" }}
-              to="/subscribe"
-            >
-              Subscribe Now
-            </Link>
-          </button>
-        </div>
-      </div>
+      )}
     </section>
   );
 };

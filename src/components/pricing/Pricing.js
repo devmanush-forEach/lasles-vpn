@@ -1,8 +1,17 @@
 import "./Pricing.css";
 import PlansData from "./PlansData";
 import Plancard from "../planCard/Plancard";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { get_Plans } from "../../redux/actions/plan.actions";
 
 const Pricing = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(get_Plans());
+  }, []);
+  const { plans } = useSelector((state) => state.plan);
+
   return (
     <>
       <section className="pricing-section" id="pricing">
@@ -12,7 +21,7 @@ const Pricing = () => {
           and cheerfully.
         </div>
         <div className="pricing-cards">
-          {PlansData?.map((cardData, index) => (
+          {plans?.map((cardData, index) => (
             <Plancard cardData={cardData} key={`${index}g`} />
           ))}
         </div>

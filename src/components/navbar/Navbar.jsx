@@ -6,16 +6,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { axiosGet, axiosPost } from "../../common/axiosRequests";
 import { useDispatch, useSelector } from "react-redux";
-import { set_User } from "../../redux/actions/user.actions";
+import { get_User, set_User } from "../../redux/actions/user.actions";
 import { show_Notification } from "../../redux/actions/notificationBar.actions";
+import { get_Plans } from "../../redux/actions/plan.actions";
+import { getImageUrl } from "../../common/firebase/functions";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [activeElement, setActiveElement] = useState("about");
-  const [update, setUpdate] = useState(false);
-
+  const [profileUrl, setProfileUrl] = useState(
+    "https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-person-user-19.png"
+  );
+  const [admin, setAdmin] = useState(false);
   const { user } = useSelector((state) => state.user);
 
   const toggleMobileMenu = () => {
@@ -27,42 +31,27 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await axiosGet("/user");
-      if (data.status === 200) {
-        dispatch(set_User(data.data.user));
-      } else {
-        dispatch(
-          show_Notification({
-            message: "Forbidden user Please Login.",
-            isError: true,
-          })
-        );
-
-        dispatch(set_User(null));
-      }
-    };
-    getData();
+    dispatch(get_User());
+    dispatch(get_Plans());
   }, []);
 
-  const handleSignout = async () => {
-    const res = await axiosPost("/signout", {});
+  useEffect(() => {
+    const getUrl = async () => {
+      const url = await getImageUrl(user?.profile);
+      setProfileUrl(url);
+    };
+    getUrl();
+    setAdmin(user?.isAdmin);
+  }, [user]);
 
-    if (res.status === 200) {
-      dispatch(show_Notification({ message: "Logged out successfully!!" }));
-      dispatch(set_User(null));
-    } else {
-      dispatch(
-        show_Notification({ message: "ERR_CONNECTION_REFUSED", isError: true })
-      );
-    }
-    setUpdate(!update);
+  const handleSignout = async () => {
+    localStorage.removeItem("jwt_token");
+    dispatch(show_Notification({ message: "Logged out successfully!!" }));
+    dispatch(set_User(null));
     navigate("/");
     setShowMobileMenu(false);
+    window.location.reload();
   };
-
-  console.log(user);
-  console.log(update);
 
   return (
     <>
@@ -173,20 +162,22 @@ const Navbar = () => {
               </>
             ) : (
               <div className="user_intro_div">
-                {/* <img
-                  src={profile}
+                {user.name.split(" ")[0]}
+                <img
+                  src={profileUrl}
                   alt="aly"
                   height="30px"
                   className="navbar_profile_image"
-                /> */}
-                {user.name}
+                />
                 <div className="user_box">
                   <ul>
-                    <li>
-                      <Link className="link-text" to="/adminPage">
-                        Admin Page
-                      </Link>
-                    </li>
+                    {admin && (
+                      <li>
+                        <Link className="link-text" to="/adminPage">
+                          Admin Page
+                        </Link>
+                      </li>
+                    )}
                     <li>
                       <Link className="link-text" to="/profile">
                         View Profile
@@ -244,20 +235,36 @@ const Navbar = () => {
           </li>
           {user ? (
             <>
-              <li className="nav-list-item">
-                <Link className="link-text" to="/adminPage">
-                  Admin Page
-                </Link>
-              </li>
+              {admin && (
+                <li
+                  className="nav-list-item"
+                  style={{ background: "white", color: "rgb(245,56,56)" }}
+                >
+                  <Link className="link-text" to="/adminPage">
+                    Admin Page
+                  </Link>
+                </li>
+              )}
               <li
                 className="nav-list-item"
-                style={{ background: "white", color: "rgb(245,56,56)" }}
+                style={{
+                  background: !admin && "white",
+                  color: !admin && "rgb(245,56,56)",
+                }}
               >
                 <Link className="link-text" to="/profile">
                   View Profile
                 </Link>
               </li>
-              <li className="nav-list-item" onClick={handleSignout}>
+              <li
+                className="nav-list-item"
+                style={{
+                  background: admin && "white",
+                  color: admin && "black",
+                  borderBottom: admin && "1px solid gray",
+                }}
+                onClick={handleSignout}
+              >
                 Signout
               </li>
             </>

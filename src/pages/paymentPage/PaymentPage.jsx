@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { axiosPost } from "../../common/axiosRequests";
 import { show_Notification } from "../../redux/actions/notificationBar.actions";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 import logo from "../../Assets/favicon.ico";
 import "./PaymentPage.css";
 
@@ -15,19 +15,16 @@ const PaymentPage = () => {
   const verifyPayment = async (ids) => {
     // demo data for verification
 
-    const resData = {
+    const reqData = {
       ids: {
-        razorpay_order_id: "order_KnwDAaX76RvlgN",
-        razorpay_payment_id: "pay_KnwDISHODnqqcN",
-        razorpay_signature:
-          "0f6aa663f236f90a5a58593c8db37055fb0ac1985fd86ec4cd14dea5efb5e26b",
+        razorpay_order_id: ids.razorpay_order_id,
+        razorpay_payment_id: ids.razorpay_payment_id,
+        razorpay_signature: ids.razorpay_signature,
       },
-      amount: 1,
-      planType: "free",
+      plan: plan,
     };
-    const res = await axiosPost("/payment/paymentVerification", resData);
 
-    // const res = await axiosPost("/payment/paymentVerification", ids);
+    const res = await axiosPost("/payment/paymentVerification", reqData);
 
     if (res.error) {
       dispatch(
@@ -38,12 +35,12 @@ const PaymentPage = () => {
       );
     }
     if (res.data) {
-      const { payment_id } = res.data;
       dispatch(
         show_Notification({
-          message: `Payment is successfull with payment_id ${payment_id}  `,
+          message: `Congrats, ${plan?.title} is successfully subscribed !`,
         })
       );
+      navigate("/");
     }
   };
 
@@ -52,11 +49,13 @@ const PaymentPage = () => {
       data: { key },
     } = await axiosPost("/payment/getkey", {});
 
+    const res = await axiosPost("/payment/setOrder", {
+      amount: +plan.price * 100,
+    });
+
     const {
       data: { order },
-    } = await axiosPost("/payment/setOrder", {
-      amount: plan.price * 100,
-    });
+    } = res;
 
     const options = {
       key: key,
@@ -96,26 +95,37 @@ const PaymentPage = () => {
         <div className="payment_page_box">
           <div className="payment_plan_card">
             <div className="payment_plan_list">
-              Title : <span>{plan?.title} Plan</span>
+              Title : <span>{plan?.title} </span>
             </div>
             <div className="payment_plan_list">
-              Price : <span>{plan?.price}/mo</span>
+              Price :{" "}
+              <span>
+                {plan?.price}
+                {plan?.price !== "free" && "Rs /mo"}
+              </span>
             </div>
           </div>
           <div className="payment_methods_div">
             <div className="payment_heading">Choose How To Pay</div>
             <div className="payment_methods_box">
-              <button
-                type=""
-                onClick={handlePaymentByRazorPay}
-                disabled={!plan || !user}
-                className="razor_pay_btn"
-              >
-                Pay by RazorPay
-              </button>
-              <button type="" onClick={verifyPayment} className="razor_pay_btn">
-                Verify Payment
-              </button>
+              {plan?.price === "free" ? (
+                <button
+                  type=""
+                  onClick={verifyPayment}
+                  className="razor_pay_btn"
+                >
+                  Subscibe To Free Plan
+                </button>
+              ) : (
+                <button
+                  type=""
+                  onClick={handlePaymentByRazorPay}
+                  disabled={!plan || !user}
+                  className="razor_pay_btn"
+                >
+                  Pay by RazorPay
+                </button>
+              )}
             </div>
           </div>
         </div>

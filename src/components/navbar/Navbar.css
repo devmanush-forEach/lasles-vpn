@@ -4,7 +4,7 @@
   top: 0%;
   z-index: 100;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .navbar-container {
   height: 80px;
@@ -85,18 +85,25 @@
   width: 120px;
   text-transform: capitalize;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
 }
 
 .navbar_profile_image {
   width: 30px;
-  border: 1px solid red;
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+  border-radius: 20px;
 }
 
 .user_box {
   position: absolute;
   width: 100%;
-  top: 21px;
+  top: 28px;
   display: none;
+  transition: all 1s ease-in-out;
 }
 .user_intro_div:hover .user_box {
   display: block;
@@ -139,6 +146,7 @@
   text-align: left;
   margin: auto;
   color: aliceblue;
+  top: 80px;
 }
 
 .mobile-menu-list {
@@ -174,7 +182,6 @@
 @media (max-width: 550px) {
   .header {
     height: 40px;
-    position: sticky;
     z-index: 100;
   }
   .navbar-container {

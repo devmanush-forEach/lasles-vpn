@@ -53,6 +53,20 @@
   align-items: center;
 }
 
+.signup_signin_link {
+  color: gray;
+  font-size: 12px;
+}
+
+.signin_link_tag {
+  font-size: 12px;
+  margin-left: 5px;
+  text-decoration: none;
+}
+.signin_link_tag:hover {
+  color: red;
+}
+
 @media (max-width: 1000px) {
   .signup-box {
     grid-template-columns: 1fr;

@@ -24,7 +24,6 @@
   width: 80%;
   margin: auto;
   height: 100%;
-  /* border: 1px solid teal; */
 }
 
 .plan_table_head {
@@ -43,6 +42,7 @@
   font-size: 20px;
   font-weight: 600;
   color: white;
+  text-transform: capitalize;
 }
 .active_plan_square {
   background-color: rgb(245, 56, 56);

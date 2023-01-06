@@ -4,8 +4,10 @@ import UserRedIcon from "../../Assets/User-red.svg";
 import LocationRedIcon from "../../Assets/Red-location-icon.svg";
 import OptionIcon from "../../Assets/Option-icon.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const About = () => {
+  const { user } = useSelector((state) => state.user);
   return (
     <>
       <section className="about-section" id="about">
@@ -20,14 +22,16 @@ const About = () => {
               <span className="name">LaslesVPN</span> discover interesting
               features from us.
             </div>
-            <button className="get-start-btn">
-              <Link
-                style={{ color: "white", textDecoration: "none" }}
-                to="/subscribe"
-              >
-                Get Started
-              </Link>
-            </button>
+            {!user?.subscibedPlan && (
+              <button className="get-start-btn">
+                <Link
+                  style={{ color: "white", textDecoration: "none" }}
+                  to="/subscribe"
+                >
+                  Get Started
+                </Link>
+              </button>
+            )}
           </div>
           <div className="right-part">
             <img src={aboutLogo} alt="about-logo" width="100%" />

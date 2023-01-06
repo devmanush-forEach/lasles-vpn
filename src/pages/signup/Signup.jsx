@@ -5,10 +5,10 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { axiosPost } from "../../common/axiosRequests";
 import { show_Notification } from "../../redux/actions/notificationBar.actions";
-import Navbar from "../navbar/Navbar";
-import ImageUpload from "../ImageUpload/ImageUpload";
-import getFormData from "../../common/getFormData";
+import ImageUpload from "../../components/ImageUpload/ImageUpload";
 import signupImage from "../../Assets/signup.jpg";
+import { uploadImage } from "../../common/firebase/functions";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -30,12 +30,21 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = getFormData(data);
-    const res = await axiosPost("/signup", formData);
+    const url = await uploadImage(data.profile);
+    const toCreate = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      password: data.password,
+      profile: url,
+    };
+    const res = await axiosPost("/signup", toCreate);
 
     if (res.status === 201) {
+      localStorage.setItem("jwt_token", res.data.token);
       dispatch(show_Notification({ message: "User registered Successfully." }));
       navigate("/");
+      window.location.reload();
     } else {
       dispatch(
         show_Notification({ message: "ERR_CONNECTION_REFUSED", isError: true })
@@ -45,7 +54,6 @@ const Signup = () => {
 
   return (
     <>
-      <Navbar />
       <div className="signup-box">
         <div>
           <img src={signupImage} alt="" width="100%" height="100%" />
@@ -136,6 +144,12 @@ const Signup = () => {
               Signup
             </button>
           </form>
+          <div className="signup_signin_link">
+            Already a user click here to
+            <Link className="signin_link_tag" to="/signin">
+              Signin
+            </Link>
+          </div>
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
-import Navbar from "../../components/navbar/Navbar";
+import Navbar from "../../../components/navbar/Navbar";
 import "./AdminPage.css";
-import logo from "../../Assets/Logo.svg";
+import logo from "../../../Assets/Logo.svg";
 import { useState } from "react";
 import AddPlanForm from "../AddPlanForm/AddPlanForm";
 
