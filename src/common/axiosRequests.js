@@ -26,6 +26,7 @@ export const axiosPost = async (endpoint, data) => {
     const res = await axios.post(url, data, {
       headers: {
         Authorization: token,
+        "Access-Control-Request-Private-Network": true,
       },
     });
     return res;
