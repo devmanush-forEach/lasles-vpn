@@ -12,6 +12,7 @@ export const axiosGet = async (endpoint) => {
     const res = await axios.get(url, {
       headers: {
         Authorization: token,
+        "Access-Control-Request-Private-Network": true,
       },
     });
     return res;
@@ -41,6 +42,7 @@ export const axiosPatch = async (endpoint, data) => {
     const res = await axios.patch(url, data, {
       headers: {
         Authorization: token,
+        "Access-Control-Request-Private-Network": true,
       },
     });
     return res;

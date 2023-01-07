@@ -1,15 +1,8 @@
 import "./Pricing.css";
-import PlansData from "./PlansData";
 import Plancard from "../planCard/Plancard";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { get_Plans } from "../../redux/actions/plan.actions";
+import { useSelector } from "react-redux";
 
 const Pricing = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(get_Plans());
-  }, []);
   const { plans } = useSelector((state) => state.plan);
 
   return (
