@@ -1,7 +1,7 @@
 .header {
   height: 80px;
   position: fixed;
-  top: 0%;
+  top: 0px;
   z-index: 100;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
@@ -165,6 +165,12 @@
   padding-left: 50px;
 }
 
+@media (min-width: 1000px) {
+  .mobile-menu-container {
+    display: none !important;
+  }
+}
+
 @media (max-width: 1000px) {
   .hamburger-icon {
     display: grid;
@@ -181,8 +187,13 @@
 }
 @media (max-width: 550px) {
   .header {
+    top: 0%;
     height: 40px;
     z-index: 100;
+  }
+
+  .mobile-menu-container {
+    top: 40px;
   }
   .navbar-container {
     padding: 0px 20px;

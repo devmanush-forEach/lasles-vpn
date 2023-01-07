@@ -9,4 +9,11 @@ button {
 }
 .App {
   text-align: center;
+  padding-top: 80px;
+}
+
+@media (max-width: 550px) {
+  .App {
+    margin-top: 50px;
+  }
 }

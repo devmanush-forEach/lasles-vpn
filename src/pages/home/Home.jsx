@@ -8,7 +8,6 @@ import Testimonials from "../../components/testimonials/Testimonials";
 
 const Home = () => {
   const { user } = useSelector((state) => state.user);
-  console.log(user);
   return (
     <>
       <About />

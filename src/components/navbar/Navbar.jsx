@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Bars from "../../Assets/Bars.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { axiosGet, axiosPost } from "../../common/axiosRequests";
 import { useDispatch, useSelector } from "react-redux";
 import { get_User, set_User } from "../../redux/actions/user.actions";
 import { show_Notification } from "../../redux/actions/notificationBar.actions";
@@ -24,6 +23,7 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => {
     setShowMobileMenu(!showMobileMenu);
+    console.log("working fine");
   };
 
   const changeActiveElement = (ele) => {
@@ -44,6 +44,10 @@ const Navbar = () => {
     setAdmin(user?.isAdmin);
   }, [user]);
 
+  const hideMobilemenu = () => {
+    setShowMobileMenu(false);
+  };
+
   const handleSignout = async () => {
     localStorage.removeItem("jwt_token");
     dispatch(show_Notification({ message: "Logged out successfully!!" }));
@@ -52,6 +56,17 @@ const Navbar = () => {
     setShowMobileMenu(false);
     window.location.reload();
   };
+
+  useEffect(() => {
+    window.addEventListener("mousedown", ({ target }) => {
+      if (
+        !document?.getElementById("mobile_menu_container")?.contains(target) &&
+        target.id !== "hamburger"
+      ) {
+        hideMobilemenu();
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -192,101 +207,136 @@ const Navbar = () => {
             )}
           </div>
           <div className="hamburger-icon">
-            {user && <div>{user.name}</div>}
-            <img src={Bars} alt="" onClick={toggleMobileMenu} />
+            {user && <div>{user.name.split(" ")[0]}</div>}
+            <img src={Bars} alt="" id="hamburger" onClick={toggleMobileMenu} />
           </div>
         </div>
       </header>
-      <div
-        className="mobile-menu-container"
-        style={{ display: showMobileMenu ? "block" : "none" }}
-      >
-        <ul className="mobile-menu-list">
-          <li className="nav-list-item">
-            <HashLink className="link-text" to="/#about">
-              About
-            </HashLink>
-          </li>
-          <li
-            className="nav-list-item"
-            style={{ background: "white", color: "rgb(245,56,56)" }}
-          >
-            <HashLink className="link-text" to="/#features">
-              Features
-            </HashLink>
-          </li>
-          <li className="nav-list-item">
-            <HashLink className="link-text" to="/#pricing">
-              Pricing
-            </HashLink>
-          </li>
-          <li
-            className="nav-list-item"
-            style={{ background: "white", color: "rgb(245,56,56)" }}
-          >
-            <HashLink className="link-text" to="/#testimonials">
-              Testimonials
-            </HashLink>
-          </li>
-          <li className="nav-list-item">
-            <HashLink className="link-text" to="/#footer">
-              Help
-            </HashLink>
-          </li>
-          {user ? (
-            <>
-              {admin && (
+      {showMobileMenu && (
+        <div className="mobile-menu-container" id="mobile_menu_container">
+          <ul className="mobile-menu-list">
+            <li className="nav-list-item">
+              <HashLink
+                className="link-text "
+                onClick={hideMobilemenu}
+                to="/#about"
+              >
+                About
+              </HashLink>
+            </li>
+            <li
+              className="nav-list-item"
+              style={{ background: "white", color: "rgb(245,56,56)" }}
+            >
+              <HashLink
+                className="link-text "
+                onClick={hideMobilemenu}
+                to="/#features"
+              >
+                Features
+              </HashLink>
+            </li>
+            <li className="nav-list-item">
+              <HashLink
+                className="link-text "
+                onClick={hideMobilemenu}
+                to="/#pricing"
+              >
+                Pricing
+              </HashLink>
+            </li>
+            <li
+              className="nav-list-item"
+              style={{ background: "white", color: "rgb(245,56,56)" }}
+            >
+              <HashLink
+                className="link-text "
+                onClick={hideMobilemenu}
+                to="/#testimonials"
+              >
+                Testimonials
+              </HashLink>
+            </li>
+            <li className="nav-list-item">
+              <HashLink
+                className="link-text "
+                onClick={hideMobilemenu}
+                to="/#footer"
+              >
+                Help
+              </HashLink>
+            </li>
+            {user ? (
+              <>
+                {admin && (
+                  <li
+                    className="nav-list-item"
+                    style={{ background: "white", color: "rgb(245,56,56)" }}
+                  >
+                    <Link
+                      className="link-text "
+                      onClick={hideMobilemenu}
+                      to="/adminPage"
+                    >
+                      Admin Page
+                    </Link>
+                  </li>
+                )}
+                <li
+                  className="nav-list-item"
+                  style={{
+                    background: !admin && "white",
+                    color: !admin && "rgb(245,56,56)",
+                  }}
+                >
+                  <Link
+                    className="link-text "
+                    onClick={hideMobilemenu}
+                    to="/profile"
+                  >
+                    View Profile
+                  </Link>
+                </li>
+                <li
+                  className="nav-list-item"
+                  style={{
+                    background: admin && "white",
+                    color: admin && "black",
+                    borderBottom: admin && "1px solid gray",
+                  }}
+                  onClick={handleSignout}
+                >
+                  Signout
+                </li>
+              </>
+            ) : (
+              <>
                 <li
                   className="nav-list-item"
                   style={{ background: "white", color: "rgb(245,56,56)" }}
                 >
-                  <Link className="link-text" to="/adminPage">
-                    Admin Page
+                  <Link
+                    className="link-text "
+                    onClick={hideMobilemenu}
+                    to="/signin"
+                  >
+                    Signin
                   </Link>
                 </li>
-              )}
-              <li
-                className="nav-list-item"
-                style={{
-                  background: !admin && "white",
-                  color: !admin && "rgb(245,56,56)",
-                }}
-              >
-                <Link className="link-text" to="/profile">
-                  View Profile
-                </Link>
-              </li>
-              <li
-                className="nav-list-item"
-                style={{
-                  background: admin && "white",
-                  color: admin && "black",
-                  borderBottom: admin && "1px solid gray",
-                }}
-                onClick={handleSignout}
-              >
-                Signout
-              </li>
-            </>
-          ) : (
-            <>
-              <li
-                className="nav-list-item"
-                style={{ background: "white", color: "rgb(245,56,56)" }}
-              >
-                <Link className="link-text" to="/signin">
-                  Signin
-                </Link>
-              </li>
-              <li className="nav-list-item">
-                <Link className="link-text" to="/signup">
-                  Signup
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
+                <li className="nav-list-item">
+                  <Link
+                    className="link-text "
+                    onClick={hideMobilemenu}
+                    to="/signup"
+                  >
+                    Signup
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
+        </div>
+      )}
     </>
   );
 };
