@@ -72,7 +72,7 @@ const SubscribePage = () => {
                       className={activePlan === ele.title && "color_orange"}
                     >
                       {ele.price}
-                      <span>{ele.price !== "free" && "Rs /mo"}</span>
+                      <span>{ele.price.toLowerCase() !== "free" && " Rs/mo"}</span>
                     </div>
                   ))}
                 </tr>
@@ -108,7 +108,7 @@ const SubscribePage = () => {
                             <li
                               style={{ textTransform: "capitalize" }}
                               className={
-                                activePlan === ele.title && "color_orange"
+                                activePlan === ele.title ? "color_orange" : ''
                               }
                             >
                               {point}

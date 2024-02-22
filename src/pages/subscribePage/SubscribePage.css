@@ -3,10 +3,11 @@
   display: grid;
   place-items: center;
   text-align: left;
+  padding-bottom: 100px;
 }
 
 .subscribe_box {
-  margin-top: 100px;
+  margin-top: 40px;
   width: 80vw;
 }
 

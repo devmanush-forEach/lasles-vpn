@@ -81,6 +81,7 @@ const Navbar = () => {
             <ul className="nav-list">
               <li className="nav-list-item">
                 <HashLink
+                  scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                   name="about"
                   className={
                     activeElement === "about"
@@ -97,6 +98,7 @@ const Navbar = () => {
               </li>
               <li className="nav-list-item">
                 <HashLink
+                  scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                   name="features"
                   className={
                     activeElement === "features"
@@ -113,6 +115,7 @@ const Navbar = () => {
               </li>
               <li className="nav-list-item">
                 <HashLink
+                  scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                   name="pricing"
                   className={
                     activeElement === "pricing"
@@ -129,6 +132,7 @@ const Navbar = () => {
               </li>
               <li className="nav-list-item">
                 <HashLink
+                  scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                   name="testimonials"
                   className={
                     activeElement === "testimonials"
@@ -145,6 +149,7 @@ const Navbar = () => {
               </li>
               <li className="nav-list-item">
                 <HashLink
+                  scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                   name="footer"
                   className={
                     activeElement === "footer"
@@ -217,6 +222,7 @@ const Navbar = () => {
           <ul className="mobile-menu-list">
             <li className="nav-list-item">
               <HashLink
+                scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                 className="link-text "
                 onClick={hideMobilemenu}
                 to="/#about"
@@ -224,11 +230,9 @@ const Navbar = () => {
                 About
               </HashLink>
             </li>
-            <li
-              className="nav-list-item"
-              style={{ background: "white", color: "rgb(245,56,56)" }}
-            >
+            <li className="nav-list-item">
               <HashLink
+                scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                 className="link-text "
                 onClick={hideMobilemenu}
                 to="/#features"
@@ -238,6 +242,7 @@ const Navbar = () => {
             </li>
             <li className="nav-list-item">
               <HashLink
+                scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                 className="link-text "
                 onClick={hideMobilemenu}
                 to="/#pricing"
@@ -245,11 +250,9 @@ const Navbar = () => {
                 Pricing
               </HashLink>
             </li>
-            <li
-              className="nav-list-item"
-              style={{ background: "white", color: "rgb(245,56,56)" }}
-            >
+            <li className="nav-list-item">
               <HashLink
+                scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                 className="link-text "
                 onClick={hideMobilemenu}
                 to="/#testimonials"
@@ -259,6 +262,7 @@ const Navbar = () => {
             </li>
             <li className="nav-list-item">
               <HashLink
+                scroll={(el) => el.scrollIntoView({ behavior: "smooth" })}
                 className="link-text "
                 onClick={hideMobilemenu}
                 to="/#footer"
@@ -269,10 +273,7 @@ const Navbar = () => {
             {user ? (
               <>
                 {admin && (
-                  <li
-                    className="nav-list-item"
-                    style={{ background: "white", color: "rgb(245,56,56)" }}
-                  >
+                  <li className="nav-list-item">
                     <Link
                       className="link-text "
                       onClick={hideMobilemenu}
@@ -297,24 +298,13 @@ const Navbar = () => {
                     View Profile
                   </Link>
                 </li>
-                <li
-                  className="nav-list-item"
-                  style={{
-                    background: admin && "white",
-                    color: admin && "black",
-                    borderBottom: admin && "1px solid gray",
-                  }}
-                  onClick={handleSignout}
-                >
+                <li className="nav-list-item" onClick={handleSignout}>
                   Signout
                 </li>
               </>
             ) : (
               <>
-                <li
-                  className="nav-list-item"
-                  style={{ background: "white", color: "rgb(245,56,56)" }}
-                >
+                <li className="nav-list-item">
                   <Link
                     className="link-text "
                     onClick={hideMobilemenu}

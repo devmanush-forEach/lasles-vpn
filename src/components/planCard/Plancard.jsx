@@ -42,7 +42,7 @@ const Plancard = ({ cardData }) => {
       <div className="plan-card-bottom">
         <div>
           <span className="card-price">{cardData.price}</span>
-          {cardData.price !== "free" && " Rs /mo"}
+          {cardData.price.toLowerCase() !== "free" && " Rs /mo"}
         </div>
         <button onClick={setPlan} className="outlined-btn">
           Select
