@@ -23,14 +23,15 @@ const About = () => {
               features from us.
             </div>
             {!user?.subscibedPlan && (
-              <button className="get-start-btn">
-                <Link
-                  style={{ color: "white", textDecoration: "none" }}
-                  to="/subscribe"
-                >
-                  Get Started
-                </Link>
-              </button>
+              // <button className="get-start-btn">
+              <Link
+                className="get-start-btn"
+                style={{ color: "white", textDecoration: "none" }}
+                to="/subscribe"
+              >
+                Get Started
+              </Link>
+              // </button>
             )}
           </div>
           <div className="right-part">

@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.plan-card-logo{
+  min-height: 177px;
+}
+
 .plan-card-logo > img {
   width: 150px;
 }

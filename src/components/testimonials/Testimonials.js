@@ -27,14 +27,15 @@ const Testimonials = () => {
             </div>
           </div>
           <div className="right">
-            <button className="get-start-btn">
+            {/* <button className="get-start-btn"> */}
               <Link
+                className="get-start-btn"
                 style={{ color: "white", textDecoration: "none" }}
                 to="/subscribe"
               >
                 Subscribe Now
               </Link>
-            </button>
+            {/* </button> */}
           </div>
         </div>
       )}

@@ -50,6 +50,8 @@
 }
 
 .get-start-btn {
+  display: grid;
+  place-items: center;
   background-color: #f53838;
   color: white;
   width: 250px;
